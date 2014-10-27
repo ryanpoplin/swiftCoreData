@@ -7,10 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
-class TableViewController: UIViewController, UITableViewDataSource {
+class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    struct TableViewConstants {
+        
+        static let cellIdentifier = "Cell"
+    
+    }
+    
+    var frc:NSFetchedResultsController!
+    
+    var managedObjectContext:NSManagedObjectContext? {
+        return (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    }
+    
+    let fetchRequest = NSFetchRequest(entityName: "Shortcut")
+    
+    let shortcutSort = NSSortDescriptor(key: "shortcut", ascending: false)
     
     var allRows = []
     
@@ -28,7 +43,27 @@ class TableViewController: UIViewController, UITableViewDataSource {
     var tableView: UITableView?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        //...
+        fetchRequest.sortDescriptors = [shortcutSort]
+        
+        frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        
+        frc.delegate = self
+        
+        var fetchingError:NSError?
+        
+        if frc.performFetch(&fetchingError) {
+            
+            println("Successful fetch...")
+        
+        } else {
+        
+            println("Failed fetch...")
+        
+        }
         
         tableView = UITableView(frame: view.bounds, style: .Plain)
         
@@ -44,6 +79,8 @@ class TableViewController: UIViewController, UITableViewDataSource {
             view.addSubview(theTableView)
         }
         
+        //...
+        // performSegueWithIdentifier("View", sender: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -52,22 +89,44 @@ class TableViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        
+        tableView?.beginUpdates()
+        
     }
     
+    func controller(controller: NSFetchedResultsController!, didChangeObject anObject: AnyObject!, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!) {
+        
+        if type == .Delete {
+            
+            tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            
+        } else if type == .Insert {
+            
+            tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            
+        }
+        
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
         
-        return allRows.count
+        let sectionInfo = frc.sections![section] as NSFetchedResultsSectionInfo
+        
+        return sectionInfo.numberOfObjects
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("identifier", forIndexPath: indexPath) as UITableViewCell
         
-        cell.textLabel.text = "\(allRows[indexPath.row])"
+        let shortcut = frc.objectAtIndexPath(indexPath) as Shortcut
+        
+        cell.textLabel.text = shortcut.shortcut
         
         return cell
+    
     }
     
     func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
@@ -83,13 +142,42 @@ class TableViewController: UIViewController, UITableViewDataSource {
     
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         if editingStyle == .Delete {
-            // an array of core data items loaded into the table view...
-            // allRows.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+           
+            let shortcutToDelete = self.frc.objectAtIndexPath(indexPath) as Shortcut
+            
+            managedObjectContext!.deleteObject(shortcutToDelete)
+            
+            if shortcutToDelete.deleted {
+                
+                var savingError:NSError?
+                
+                if managedObjectContext!.save(&savingError) {
+                    
+                    println("Object deleted...")
+                    
+                } else {
+                    
+                    if let error = savingError {
+                        
+                        println("Error: \(error)")
+                        
+                    }
+                    
+                }
+                
+            }
+            
         }
+
     }
     
-    func editTableViewRows() {
+    /*func editTableViewRows() {
+        
+    }*/
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        
+        tableView?.endUpdates()
         
     }
     

@@ -42,6 +42,7 @@
 		5A6D4E0A19FE14E400F5F31E /* AACTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACTests.swift; sourceTree = "<group>"; };
 		5A6D4E1419FE153A00F5F31E /* Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
 		5A6D4E1619FE2DB900F5F31E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		5A6D4E1B19FEBE5800F5F31E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = AAC/MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +66,7 @@
 		5A6D4DE319FE14E300F5F31E = {
 			isa = PBXGroup;
 			children = (
+				5A6D4E1B19FEBE5800F5F31E /* MyPlayground.playground */,
 				5A6D4DEE19FE14E300F5F31E /* AAC */,
 				5A6D4E0719FE14E400F5F31E /* AACTests */,
 				5A6D4DED19FE14E300F5F31E /* Products */,
@@ -83,15 +85,14 @@
 		5A6D4DEE19FE14E300F5F31E /* AAC */ = {
 			isa = PBXGroup;
 			children = (
+				5A6D4DF819FE14E400F5F31E /* Main.storyboard */,
 				5A6D4DF119FE14E300F5F31E /* AppDelegate.swift */,
 				5A6D4DF619FE14E400F5F31E /* ViewController.swift */,
 				5A6D4E1619FE2DB900F5F31E /* TableViewController.swift */,
-				5A6D4DF819FE14E400F5F31E /* Main.storyboard */,
-				5A6D4DFB19FE14E400F5F31E /* Images.xcassets */,
-				5A6D4DFD19FE14E400F5F31E /* LaunchScreen.xib */,
-				5A6D4DF319FE14E400F5F31E /* AAC.xcdatamodeld */,
-				5A6D4E1419FE153A00F5F31E /* Shortcut.swift */,
+				5A6D4E1819FEB67A00F5F31E /* CoreData */,
 				5A6D4DEF19FE14E300F5F31E /* Supporting Files */,
+				5A6D4DFD19FE14E400F5F31E /* LaunchScreen.xib */,
+				5A6D4DFB19FE14E400F5F31E /* Images.xcassets */,
 			);
 			path = AAC;
 			sourceTree = "<group>";
@@ -119,6 +120,15 @@
 				5A6D4E0919FE14E400F5F31E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A6D4E1819FEB67A00F5F31E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5A6D4DF319FE14E400F5F31E /* AAC.xcdatamodeld */,
+				5A6D4E1419FE153A00F5F31E /* Shortcut.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

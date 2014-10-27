@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var shortcutsArr = []
+    // var shortcutsArr = []
     
     func fetchShortcuts() {
         
@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fetchShortcuts()
         
         return true
+    
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -158,5 +159,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
 }

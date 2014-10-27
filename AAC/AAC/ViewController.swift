@@ -43,8 +43,8 @@ class ViewController: UIViewController, UITextViewDelegate {
     var shortcutsButton:UIButton!
     
     func segueToShortcuts(sender:UIButton) {
-        
-        // performSegueWithIdentifier("yourSegueIdentifier", sender:nil)
+
+        performSegueWithIdentifier("TableView", sender: shortcutsButton)
         
     }
     
