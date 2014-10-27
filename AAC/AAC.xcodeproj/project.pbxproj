@@ -15,6 +15,7 @@
 		5A6D4DFF19FE14E400F5F31E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6D4DFD19FE14E400F5F31E /* LaunchScreen.xib */; };
 		5A6D4E0B19FE14E400F5F31E /* AACTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D4E0A19FE14E400F5F31E /* AACTests.swift */; };
 		5A6D4E1519FE153A00F5F31E /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D4E1419FE153A00F5F31E /* Shortcut.swift */; };
+		5A6D4E1719FE2DB900F5F31E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D4E1619FE2DB900F5F31E /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		5A6D4E0919FE14E400F5F31E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A6D4E0A19FE14E400F5F31E /* AACTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACTests.swift; sourceTree = "<group>"; };
 		5A6D4E1419FE153A00F5F31E /* Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
+		5A6D4E1619FE2DB900F5F31E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				5A6D4DF119FE14E300F5F31E /* AppDelegate.swift */,
 				5A6D4DF619FE14E400F5F31E /* ViewController.swift */,
+				5A6D4E1619FE2DB900F5F31E /* TableViewController.swift */,
 				5A6D4DF819FE14E400F5F31E /* Main.storyboard */,
 				5A6D4DFB19FE14E400F5F31E /* Images.xcassets */,
 				5A6D4DFD19FE14E400F5F31E /* LaunchScreen.xib */,
@@ -221,6 +224,7 @@
 				5A6D4DF719FE14E400F5F31E /* ViewController.swift in Sources */,
 				5A6D4E1519FE153A00F5F31E /* Shortcut.swift in Sources */,
 				5A6D4DF219FE14E300F5F31E /* AppDelegate.swift in Sources */,
+				5A6D4E1719FE2DB900F5F31E /* TableViewController.swift in Sources */,
 				5A6D4DF519FE14E400F5F31E /* AAC.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

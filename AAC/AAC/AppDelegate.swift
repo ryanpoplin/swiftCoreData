@@ -14,6 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var shortcutsArr = []
+    
+    func fetchShortcuts() {
+        
+        let fetchRequest = NSFetchRequest(entityName: "Shortcut")
+        var requestError:NSError?
+        let shortcuts = managedObjectContext!.executeFetchRequest(fetchRequest, error: &requestError) as [Shortcut!]
+
+        for shortcut in shortcuts {
+            
+            println("\(shortcut.shortcut)")
+            
+        }
+        
+    }
+    
     func createNewShortcut(shortcut:String) -> Bool {
         
         let newShortcut = NSEntityDescription.insertNewObjectForEntityForName("Shortcut", inManagedObjectContext: managedObjectContext!) as Shortcut
@@ -23,11 +39,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var savingError:NSError?
         
         if managedObjectContext!.save(&savingError) {
+            
+            let alert = UIAlertView()
+            alert.title = "Alert"
+            alert.message = "Shortcut was saved!"
+            alert.addButtonWithTitle("Done")
+            alert.show()
+            
+            fetchShortcuts()
+            
             return true
+            
         } else {
+            
             if let error = savingError {
+            
                 println("Error = \(error)")
+           
             }
+            
         }
         
         return true
@@ -37,23 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        createNewShortcut("Hello there...")
-
-        let fetchRequest = NSFetchRequest(entityName: "Shortcut")
-        var requestError:NSError?
-        let shortcuts = managedObjectContext!.executeFetchRequest(fetchRequest, error: &requestError) as [Shortcut!]
-        
-        if shortcuts.count > 0 {
-        
-            for shortcut in shortcuts {
-                println("\(shortcut.shortcut)")
-            }
-        
-        } else {
-            
-            println("Something fucked up...")
-            
-        }
+        fetchShortcuts()
         
         return true
     }
@@ -146,4 +160,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
