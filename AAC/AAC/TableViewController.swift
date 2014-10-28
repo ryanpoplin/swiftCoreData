@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+//...
+var textViewText:String = ""
+
 class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
     struct TableViewConstants {
@@ -134,10 +137,11 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
 
         var selectedCell = tableView.cellForRowAtIndexPath(indexPath)
 
-        var shortcutText = selectedCell?.textLabel.text
+        var shortcutText = selectedCell!.textLabel.text
         
-        // segue to "View" and place this value into the uitextview object instance...
-        println(shortcutText!)
+        textViewText = shortcutText!
+        
+        println(textViewText)
         
     }
     
@@ -199,14 +203,22 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
     
     }
     
-    /*
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "View" {
+        
+            let controller = segue.destinationViewController as ViewController
+            controller.textView?.text = textViewText
+        
+        }
+            
+    }
+
 }

@@ -28,6 +28,8 @@ class ViewController: UIViewController, UITextViewDelegate {
             var ttsText = textView?.text
             appDelegate.createNewShortcut(ttsText!)
             
+            // println(textViewText)
+            
         }
         
     }
