@@ -40,7 +40,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNY-ec-lfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795" y="1008"/>
+            <point key="canvasLocation" x="768" y="1033"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Ngh-e6-Bmq">
@@ -62,10 +62,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWx-0g-Ubz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1470" y="328"/>
+            <point key="canvasLocation" x="1262" y="338"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dUI-nb-Nq3"/>
+        <segue reference="4av-r5-ZfC"/>
     </inferredMetricsTieBreakers>
 </document>

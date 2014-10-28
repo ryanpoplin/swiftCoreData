@@ -429,6 +429,7 @@
 				5A6D4E1019FE14E400F5F31E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A6D4E1119FE14E400F5F31E /* Build configuration list for PBXNativeTarget "AACTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +438,7 @@
 				5A6D4E1319FE14E400F5F31E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

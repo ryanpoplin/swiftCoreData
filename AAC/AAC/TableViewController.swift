@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
     struct TableViewConstants {
         
@@ -26,8 +26,6 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
     let fetchRequest = NSFetchRequest(entityName: "Shortcut")
     
     let shortcutSort = NSSortDescriptor(key: "shortcut", ascending: false)
-    
-    var allRows = []
     
     var refreshControl:UIRefreshControl?
     
@@ -46,7 +44,6 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         super.viewDidLoad()
         
-        //...
         fetchRequest.sortDescriptors = [shortcutSort]
         
         frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
@@ -76,6 +73,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
             refreshControl!.addTarget(self, action: "handleRefresh:", forControlEvents: .ValueChanged)
             
             theTableView.addSubview(refreshControl!)
+            
             view.addSubview(theTableView)
         }
         
@@ -88,7 +86,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         
         tableView?.beginUpdates()
@@ -125,8 +123,16 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         cell.textLabel.text = shortcut.shortcut
         
+        //...
+        
         return cell
     
+    }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
@@ -182,7 +188,9 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
     }
     
     override func prefersStatusBarHidden() -> Bool {
+     
         return true
+    
     }
     
     /*
