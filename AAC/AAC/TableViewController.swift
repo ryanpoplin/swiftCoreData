@@ -132,13 +132,11 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 
-        //...
-        // performSegueWithIdentifier("View", sender: indexPath.row)
-        
         var selectedCell = tableView.cellForRowAtIndexPath(indexPath)
 
         var shortcutText = selectedCell?.textLabel.text
         
+        // segue to "View" and place this value into the uitextview object instance...
         println(shortcutText!)
         
     }
@@ -146,7 +144,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
     func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
         return .Delete
     }
-    
+
     override func setEditing(editing: Bool, animated: Bool) {
         
         super.setEditing(editing, animated: animated)
