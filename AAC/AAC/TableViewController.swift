@@ -47,6 +47,10 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         fetchRequest.sortDescriptors = [shortcutSort]
         
         frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+
+        //...
+        tableView?.dataSource = self
+        tableView?.delegate = self
         
         frc.delegate = self
         
@@ -67,6 +71,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         if let theTableView = tableView {
             theTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier:"identifier")
             theTableView.dataSource = self
+            theTableView.delegate = self
             theTableView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
             
             refreshControl = UIRefreshControl()
@@ -77,8 +82,6 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
             view.addSubview(theTableView)
         }
         
-        //...
-        // performSegueWithIdentifier("View", sender: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -123,16 +126,21 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         cell.textLabel.text = shortcut.shortcut
         
-        //...
-        
         return cell
     
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+
+        //...
+        // performSegueWithIdentifier("View", sender: indexPath.row)
+        
+        var selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+
+        var shortcutText = selectedCell?.textLabel.text
+        
+        println(shortcutText!)
+        
     }
     
     func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
