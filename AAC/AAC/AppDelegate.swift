@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+/* CONFIGURE KEENCLIENT... */
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
