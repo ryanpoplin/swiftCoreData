@@ -25,10 +25,11 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         if textView?.text != nil {
             
-            var ttsText = textView?.text
-            appDelegate.createNewShortcut(ttsText!)
+            var ttsText = textView!.text
             
-            // println(textViewText)
+            appDelegate.createNewShortcut(ttsText)
+            
+            ttsText = nil
             
         }
         

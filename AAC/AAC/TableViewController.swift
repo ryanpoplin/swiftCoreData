@@ -73,8 +73,10 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         if let theTableView = tableView {
             theTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier:"identifier")
+            
             theTableView.dataSource = self
             theTableView.delegate = self
+            
             theTableView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
             
             refreshControl = UIRefreshControl()
@@ -104,12 +106,13 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         if type == .Delete {
             
             tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            
-        } else if type == .Insert {
+        
+        // ...
+        } /*else if type == .Insert {
             
             tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             
-        }
+        }*/
         
     }
 
@@ -140,8 +143,8 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         var shortcutText = selectedCell!.textLabel.text
         
         textViewText = shortcutText!
-        
-        println(textViewText)
+
+        performSegueWithIdentifier("View", sender: nil)
         
     }
     
@@ -215,10 +218,13 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         if segue.identifier == "View" {
         
             let controller = segue.destinationViewController as ViewController
+            // Cheat...
+            println(controller.view)
             controller.textView?.text = textViewText
+            println(controller.textView)
         
         }
-            
+        
     }
 
 }
