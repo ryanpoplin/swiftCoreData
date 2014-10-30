@@ -12,6 +12,7 @@ import CoreData
 /* ADD NAV OPTION FOR TABLEVIEW, ADD EDITING FOR SHORTCUTS, AND CONFIGURE SHORTCUT DISPLAY ORDERING IN THE TABLEVIEW FROM THE FETCHEDRESULTSCONTROLLER... */
 
 //...
+var textViewness:String = ""
 var textViewText:String = ""
 
 class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate {
@@ -44,6 +45,8 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
     }
     
     var tableView: UITableView?
+    
+    let button = UIButton()
     
     override func viewDidLoad() {
         
@@ -89,6 +92,13 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
             view.addSubview(theTableView)
         }
         
+        button.setTitle("Go Back", forState: UIControlState())
+        button.backgroundColor = UIColor.clearColor()
+        button.setTitleColor(UIColor.blueColor(), forState: UIControlState())
+        button.sizeToFit()
+        button.backgroundColor = UIColor.lightGrayColor()
+        button.addTarget(self, action: "goBackButtonIsPressed:", forControlEvents: .TouchDown)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -97,6 +107,24 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         // Dispose of any resources that can be recreated.
     }
 
+    func goBackButtonIsPressed(sender:UIButton!) {
+        performSegueWithIdentifier("GoBack", sender: button)
+    }
+    
+    func newLabelWithTitle(title: String) -> UIButton {
+        return button
+    }
+    
+    func tableView(tableView: UITableView!,
+        heightForHeaderInSection section: Int) -> CGFloat{
+            return 50
+    }
+    
+    func tableView(tableView: UITableView!,
+        viewForHeaderInSection section: Int) -> UIView!{
+            return newLabelWithTitle("Section \(section) Header")
+    }
+    
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         
         tableView?.beginUpdates()
@@ -220,13 +248,11 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         if segue.identifier == "View" {
         
             let controller = segue.destinationViewController as ViewController
-            // Cheat...
-            println(controller.view)
-            controller.textView?.text = textViewText
-            println(controller.textView)
-        
+            println(controller.view) // Cheat...
+            controller.textView?.text = textViewness    // + " " + textViewText
+            
         }
         
     }
-
+    
 }

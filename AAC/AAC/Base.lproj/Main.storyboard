@@ -42,6 +42,7 @@
                     <navigationItem key="navigationItem" id="9Pt-pO-sRO"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="View" id="4av-r5-ZfC"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="GoBack" id="D7B-75-IgQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWx-0g-Ubz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -49,4 +50,7 @@
             <point key="canvasLocation" x="1262" y="338"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="D7B-75-IgQ"/>
+    </inferredMetricsTieBreakers>
 </document>

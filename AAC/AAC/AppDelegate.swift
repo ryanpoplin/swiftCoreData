@@ -22,11 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var requestError:NSError?
         let shortcuts = managedObjectContext!.executeFetchRequest(fetchRequest, error: &requestError) as [Shortcut!]
 
-        for shortcut in shortcuts {
+        /*for shortcut in shortcuts {
             
             println("\(shortcut.shortcut)")
             
-        }
+        }*/
         
     }
     
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        fetchShortcuts()
+        // fetchShortcuts()
         
         return true
     
