@@ -9,11 +9,9 @@
 import UIKit
 import CoreData
 
-/* ADD NAV OPTION FOR TABLEVIEW, ADD EDITING FOR SHORTCUTS, AND CONFIGURE SHORTCUT DISPLAY ORDERING IN THE TABLEVIEW FROM THE FETCHEDRESULTSCONTROLLER... */
-
-//...
-var textViewness:String = ""
 var textViewText:String = ""
+
+/* ADD NAV OPTION FOR TABLEVIEW, ADD EDITING FOR SHORTCUTS, AND CONFIGURE SHORTCUT DISPLAY ORDERING IN THE TABLEVIEW FROM THE FETCHEDRESULTSCONTROLLER... */
 
 class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
@@ -56,7 +54,6 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
 
-        //...
         tableView?.dataSource = self
         tableView?.delegate = self
         
@@ -248,8 +245,17 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         if segue.identifier == "View" {
         
             let controller = segue.destinationViewController as ViewController
+            println(controller.view)
+            textViewness = textViewness + " " + textViewText
+            controller.textView?.text = textViewness
+            
+        }
+        
+        if segue.identifier == "GoBack" {
+            
+            let controller = segue.destinationViewController as ViewController
             println(controller.view) // Cheat...
-            controller.textView?.text = textViewness    // + " " + textViewText
+            controller.textView?.text = textViewness
             
         }
         

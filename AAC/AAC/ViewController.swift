@@ -8,6 +8,8 @@
 
 import UIKit
 
+var textViewness:String = ""
+
 /* CONVERT EXISTING AAC_NINJA APP INTO SWIFT AND FIX THE FORMULAS IN THE DATA COLLECTION METHODS, AND ADD KEENCLIENT... */
 
 class ViewController: UIViewController, UITextViewDelegate {
@@ -25,13 +27,13 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     func saveShortcutButtonIsPressed(sender:UIButton) {
         
-        if textView?.text != nil {
+        if textView?.text != nil && textView?.text != "" {
             
             var ttsText = textView!.text
                         
             appDelegate.createNewShortcut(ttsText)
             
-            // ttsText = nil
+            ttsText = nil
             
         }
         
@@ -49,6 +51,8 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     func segueToShortcuts(sender:UIButton) {
 
+        textViewness = textView!.text
+        
         performSegueWithIdentifier("TableView", sender: shortcutsButton)
         
     }
@@ -86,6 +90,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         view.addSubview(shortcutsButton)
         
         // Do any additional setup after loading the view, typically from a nib.
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -96,19 +101,5 @@ class ViewController: UIViewController, UITextViewDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "TableView" {
-            
-            var textViewness = textView!.text
-            
-        }
-        
-    }
 
-    
 }
