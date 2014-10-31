@@ -21,12 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fetchRequest = NSFetchRequest(entityName: "Shortcut")
         var requestError:NSError?
         let shortcuts = managedObjectContext!.executeFetchRequest(fetchRequest, error: &requestError) as [Shortcut!]
-
-        /*for shortcut in shortcuts {
-            
-            println("\(shortcut.shortcut)")
-            
-        }*/
         
     }
     

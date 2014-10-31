@@ -11,6 +11,7 @@ import CoreData
 
 var textViewText:String = ""
 
+// DOESN'T MATTER FOR THE BETA...
 /* ADD NAV OPTION FOR TABLEVIEW, ADD EDITING FOR SHORTCUTS, AND CONFIGURE SHORTCUT DISPLAY ORDERING IN THE TABLEVIEW FROM THE FETCHEDRESULTSCONTROLLER... */
 
 class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate {
@@ -134,7 +135,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
             
             tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
-        // ...
+        /* ERROR HERE... */
         } /*else if type == .Insert {
             
             tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -217,6 +218,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
 
     }
     
+    // FOR THE BETA IT DOESN'T MATTER...
     /*func editTableViewRows() {
         
     }*/
