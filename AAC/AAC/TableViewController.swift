@@ -16,6 +16,12 @@ var textViewText:String = ""
 
 class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate {
     
+    override func viewDidAppear(animated:Bool) {
+        
+        super.viewDidAppear(animated)
+                
+    }
+    
     struct TableViewConstants {
         
         static let cellIdentifier = "Cell"
@@ -90,12 +96,12 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
             view.addSubview(theTableView)
         }
         
-        button.setTitle("Go Back", forState: UIControlState())
+        /*button.setTitle("Go Back", forState: UIControlState())
         button.backgroundColor = UIColor.clearColor()
         button.setTitleColor(UIColor.blueColor(), forState: UIControlState())
         button.sizeToFit()
         button.backgroundColor = UIColor.lightGrayColor()
-        button.addTarget(self, action: "goBackButtonIsPressed:", forControlEvents: .TouchDown)
+        button.addTarget(self, action: "goBackButtonIsPressed:", forControlEvents: .TouchDown)*/
         
         // Do any additional setup after loading the view.
     }
@@ -109,7 +115,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         performSegueWithIdentifier("GoBack", sender: button)
     }
     
-    func newLabelWithTitle(title: String) -> UIButton {
+    /*func newLabelWithTitle(title: String) -> UIButton {
         return button
     }
     
@@ -121,7 +127,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
     func tableView(tableView: UITableView!,
         viewForHeaderInSection section: Int) -> UIView!{
             return newLabelWithTitle("Section \(section) Header")
-    }
+    }*/
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         
@@ -172,7 +178,14 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         textViewText = shortcutText!
 
-        performSegueWithIdentifier("View", sender: nil)
+        println(view)
+
+        textViewness = textViewness + textViewText
+        
+        // self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        
+        // performSegueWithIdentifier("View", sender: nil)
         
     }
     
@@ -246,19 +259,9 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         if segue.identifier == "View" {
         
-            let controller = segue.destinationViewController as ViewController
-            println(controller.view)
-            textViewness = textViewness + " " + textViewText
-            controller.textView?.text = textViewness
+            // if the last char in the textView is not == an blankspace...
             
-        }
         
-        if segue.identifier == "GoBack" {
-            
-            let controller = segue.destinationViewController as ViewController
-            println(controller.view) // Cheat...
-            controller.textView?.text = textViewness
-            
         }
         
     }
