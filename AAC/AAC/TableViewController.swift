@@ -166,6 +166,10 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         cell.textLabel.text = shortcut.shortcut
         
+        cell.textLabel.textAlignment = .Center
+        
+        cell.textLabel.font = UIFont(name: "Arial", size: 20)
+        
         return cell
     
     }

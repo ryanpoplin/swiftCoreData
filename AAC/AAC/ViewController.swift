@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import QuartzCore
 
 var textViewness:String = ""
 
@@ -106,7 +107,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         textView?.layoutIfNeeded()
         textView = UITextView(frame: CGRect(x: 0, y: 0, width: 320, height: 220))
         textView?.contentInset = UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
-        textView?.font = UIFont.systemFontOfSize(24)
+        textView?.font = UIFont.systemFontOfSize(20)
         textView?.backgroundColor = UIColor.lightGrayColor()
         view.addSubview(textView!)
     
@@ -115,6 +116,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         speakOrPauseButton.setTitle("Speak", forState: .Normal)
         speakOrPauseButton.addTarget(self, action: "speakOrPauseButtonIsPressed:", forControlEvents: .TouchDown)
         speakOrPauseButton.backgroundColor = UIColor.lightGrayColor()
+        speakOrPauseButton.layer.cornerRadius = 5
         view.addSubview(speakOrPauseButton)
         
         saveShortcutButton = UIButton.buttonWithType(.System) as? UIButton
@@ -122,6 +124,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         saveShortcutButton.setTitle("Save", forState: .Normal)
         saveShortcutButton.addTarget(self, action: "saveShortcutButtonIsPressed:", forControlEvents: .TouchDown)
         saveShortcutButton.backgroundColor = UIColor.lightGrayColor()
+        saveShortcutButton.layer.cornerRadius = 5
         view.addSubview(saveShortcutButton)
         
         clearTextButton = UIButton.buttonWithType(.System) as? UIButton
@@ -129,6 +132,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         clearTextButton.setTitle("Clear", forState: .Normal)
         clearTextButton.addTarget(self, action: "clearTextButtonIsPressed:", forControlEvents: .TouchDown)
         clearTextButton.backgroundColor = UIColor.lightGrayColor()
+        clearTextButton.layer.cornerRadius = 5
         view.addSubview(clearTextButton)
         
         shortcutsButton = UIButton.buttonWithType(.System) as? UIButton
@@ -136,6 +140,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         shortcutsButton.setTitle("Shortcuts", forState: .Normal)
         shortcutsButton.addTarget(self, action: "segueToShortcuts:", forControlEvents: .TouchDown)
         shortcutsButton.backgroundColor = UIColor.lightGrayColor()
+        shortcutsButton.layer.cornerRadius = 5
         view.addSubview(shortcutsButton)
         
         // Do any additional setup after loading the view, typically from a nib.
