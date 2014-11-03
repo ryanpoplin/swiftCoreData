@@ -12,8 +12,6 @@ import QuartzCore
 
 var textViewness:String = ""
 
-/* CONVERT EXISTING AAC_NINJA APP INTO SWIFT AND FIX THE FORMULAS IN THE DATA COLLECTION METHODS, AND ADD KEENCLIENT... */
-
 class ViewController: UIViewController, UITextViewDelegate {
     
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
