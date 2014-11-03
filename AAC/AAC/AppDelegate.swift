@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-/* CONFIGURE KEENCLIENT... */
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -35,13 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if managedObjectContext!.save(&savingError) {
             
             let alert = UIAlertView()
-            alert.title = "Alert"
-            alert.message = "Shortcut was saved!"
+            alert.title = "Shortcut saved"
+            alert.message = ""
             alert.addButtonWithTitle("Done")
             alert.show()
             
             fetchShortcuts()
-            
+                        
             return true
             
         } else {

@@ -12,7 +12,9 @@ import QuartzCore
 
 var textViewness:String = ""
 
-class ViewController: UIViewController, UITextViewDelegate {
+var speechPaused:Bool = false
+
+class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerDelegate {
     
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
@@ -39,14 +41,14 @@ class ViewController: UIViewController, UITextViewDelegate {
             var ttsText = textView!.text
             
             appDelegate.createNewShortcut(ttsText)
-            
+                        
             ttsText = nil
             
         } else {
             
             let alert = UIAlertView()
-            alert.title = "Alert"
-            alert.message = "Create a shortcut!"
+            alert.title = "Type in some text"
+            alert.message = ""
             alert.addButtonWithTitle("Done")
             alert.show()
             
@@ -59,6 +61,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     func clearTextButtonIsPressed(sender:UIButton) {
         
         textView?.text = nil
+        self.synthesizer.stopSpeakingAtBoundary(.Immediate)
         
     }
     
@@ -78,17 +81,34 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         if textView?.text != nil && textView?.text != "" {
             
-            var mySpeechSynthesizer:AVSpeechSynthesizer = AVSpeechSynthesizer()
-            var myString:String = textView!.text
-            var mySpeechUtterance:AVSpeechUtterance = AVSpeechUtterance(string:myString)
-            mySpeechUtterance.rate = 0.2
-            mySpeechSynthesizer.speakUtterance(mySpeechUtterance)
+            if speechPaused == false {
+                
+                self.speakOrPauseButton.setTitle("Pause", forState: .Normal)
+                self.synthesizer.continueSpeaking()
+                speechPaused = true
+                
+            } else {
+                
+                self.speakOrPauseButton.setTitle("Play", forState: .Normal)
+                speechPaused = false
+                self.synthesizer.pauseSpeakingAtBoundary(.Immediate)
+                
+            }
+            
+            if self.synthesizer.speaking == false {
+                
+                var text:String = textView!.text
+                var utterance:AVSpeechUtterance = AVSpeechUtterance(string:text)
+                utterance.rate = 0.02
+                self.synthesizer.speakUtterance(utterance)
+                
+            }
         
         } else {
             
             let alert = UIAlertView()
-            alert.title = "Alert"
-            alert.message = "Type in some text!"
+            alert.title = "Type in some text"
+            alert.message = ""
             alert.addButtonWithTitle("Done")
             alert.show()
             
@@ -96,10 +116,16 @@ class ViewController: UIViewController, UITextViewDelegate {
         
     }
     
+    var synthesizer:AVSpeechSynthesizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.synthesizer = AVSpeechSynthesizer()
+        self.synthesizer.delegate = self
+        speechPaused = false
         
         textView?.sizeToFit()
         textView?.layoutIfNeeded()
@@ -143,6 +169,13 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         // Do any additional setup after loading the view, typically from a nib.
     
+    }
+    
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+        
+        self.speakOrPauseButton.setTitle("Play", forState: .Normal)
+        speechPaused = false
+        
     }
     
     override func didReceiveMemoryWarning() {
