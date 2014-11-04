@@ -12,7 +12,7 @@ import QuartzCore
 
 var textViewness:String = ""
 var speechPaused:Bool = false
-var sentenceWordCount:Int = 0
+var sentenceWordCount:Int = 1
 
 class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerDelegate {
     
@@ -63,6 +63,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     func clearTextButtonIsPressed(sender:UIButton) {
         
         textView?.text = nil
+        sentenceWordCount = 1
         self.synthesizer.stopSpeakingAtBoundary(.Immediate)
         
     }
@@ -80,6 +81,10 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     var speakOrPauseButton:UIButton!
     
     func speakOrPauseButtonIsPressed(sender:UIButton) {
+        
+        // if the last char in a sentence is ' ' then subtract 1 from sentenceLength...
+        
+        /* CONFIG FORMULA'S... */
         
         // fix condition...
         if textView?.text != nil && textView?.text != "" {
@@ -181,6 +186,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }
     
+    // edit data formula...
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
         if text == " " {
