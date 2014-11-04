@@ -11,14 +11,14 @@ import AVFoundation
 import QuartzCore
 
 var textViewness:String = ""
-
 var speechPaused:Bool = false
+var sentenceWordCount:Int = 0
 
 class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerDelegate {
     
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
-    var textView:UITextView?
+    var textView:UITextView!
 
     override func viewDidAppear(animated:Bool) {
         
@@ -79,7 +79,10 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     
     func speakOrPauseButtonIsPressed(sender:UIButton) {
         
+        // fix condition...
         if textView?.text != nil && textView?.text != "" {
+            
+            
             
             if speechPaused == false {
                 
@@ -89,7 +92,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
                 
             } else {
                 
-                self.speakOrPauseButton.setTitle("Play", forState: .Normal)
+                self.speakOrPauseButton.setTitle("Speak", forState: .Normal)
                 speechPaused = false
                 self.synthesizer.pauseSpeakingAtBoundary(.Immediate)
                 
@@ -126,6 +129,8 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         self.synthesizer = AVSpeechSynthesizer()
         self.synthesizer.delegate = self
         speechPaused = false
+        
+        textView?.delegate = self
         
         textView?.sizeToFit()
         textView?.layoutIfNeeded()
@@ -173,8 +178,16 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
         
-        self.speakOrPauseButton.setTitle("Play", forState: .Normal)
+        self.speakOrPauseButton.setTitle("Speak", forState: .Normal)
         speechPaused = false
+        
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        println("FUCK")
+        
+        return false
         
     }
     
