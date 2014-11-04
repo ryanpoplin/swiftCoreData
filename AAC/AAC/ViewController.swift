@@ -14,6 +14,9 @@ var textViewness:String = ""
 var speechPaused:Bool = false
 var sentenceWordCount:Int = 1
 
+var speakOrPauseButton:UIButton!
+var saveShortcutButton:UIButton!
+
 class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerDelegate {
     
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -34,25 +37,27 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }
     
-    var saveShortcutButton:UIButton!
-    
     func saveShortcutButtonIsPressed(sender:UIButton) {
         
-        if textView?.text != nil && textView?.text != "" {
+        var textString:NSString = textView.text
+        var charSet:NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        var trimmedString:NSString = textString.stringByTrimmingCharactersInSet(charSet)
+        
+        if trimmedString.length == 0 {
 
-            var ttsText = textView!.text
-            
-            appDelegate.createNewShortcut(ttsText)
-                        
-            ttsText = nil
-            
-        } else {
-            
-            let alert = UIAlertView()
+            /*let alert = UIAlertView()
             alert.title = "Type in some text"
             alert.message = ""
             alert.addButtonWithTitle("Done")
-            alert.show()
+            alert.show()*/
+            
+        } else {
+            
+            var ttsText = textView!.text
+            
+            appDelegate.createNewShortcut(ttsText)
+            
+            ttsText = nil
             
         }
         
@@ -64,6 +69,8 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         textView?.text = nil
         sentenceWordCount = 1
+        speakOrPauseButton.enabled = false
+        saveShortcutButton.enabled = false
         self.synthesizer.stopSpeakingAtBoundary(.Immediate)
         
     }
@@ -71,33 +78,38 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     var shortcutsButton:UIButton!
     
     func segueToShortcuts(sender:UIButton) {
-
+        
         textViewness = textView!.text
         
         performSegueWithIdentifier("TableView", sender: shortcutsButton)
         
     }
     
-    var speakOrPauseButton:UIButton!
-    
     func speakOrPauseButtonIsPressed(sender:UIButton) {
         
-        // if the last char in a sentence is ' ' then subtract 1 from sentenceLength...
+        var textString:NSString = textView.text
+        var charSet:NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        var trimmedString:NSString = textString.stringByTrimmingCharactersInSet(charSet)
         
-        /* CONFIG FORMULA'S... */
-        
-        // fix condition...
-        if textView?.text != nil && textView?.text != "" {
+        if trimmedString.length == 0 {
+    
+            /*let alert = UIAlertView()
+            alert.title = "Type in some text"
+            alert.message = ""
+            alert.addButtonWithTitle("Done")
+            alert.show()*/
+            
+        } else {
             
             if speechPaused == false {
                 
-                self.speakOrPauseButton.setTitle("Pause", forState: .Normal)
+                speakOrPauseButton.setTitle("Pause", forState: .Normal)
                 self.synthesizer.continueSpeaking()
                 speechPaused = true
                 
             } else {
                 
-                self.speakOrPauseButton.setTitle("Speak", forState: .Normal)
+                speakOrPauseButton.setTitle("Speak", forState: .Normal)
                 speechPaused = false
                 self.synthesizer.pauseSpeakingAtBoundary(.Immediate)
                 
@@ -111,15 +123,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
                 self.synthesizer.speakUtterance(utterance)
                 
             }
-        
-        } else {
-            
-            let alert = UIAlertView()
-            alert.title = "Type in some text"
-            alert.message = ""
-            alert.addButtonWithTitle("Done")
-            alert.show()
-            
+
         }
         
     }
@@ -175,19 +179,22 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         shortcutsButton.layer.cornerRadius = 5
         view.addSubview(shortcutsButton)
         
+        speakOrPauseButton.enabled = false
+        saveShortcutButton.enabled = false
+        
         // Do any additional setup after loading the view, typically from a nib.
     
     }
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
         
-        self.speakOrPauseButton.setTitle("Speak", forState: .Normal)
+        speakOrPauseButton.setTitle("Speak", forState: .Normal)
         speechPaused = false
         
     }
     
     // edit data formula...
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    /*func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
         if text == " " {
             
@@ -198,12 +205,26 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         return true
         
-    }
+    }*/
     
     //...
     func textViewDidChange(textView: UITextView) {
         
+        var textString:NSString = textView.text
+        var charSet:NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        var trimmedString:NSString = textString.stringByTrimmingCharactersInSet(charSet)
         
+        if trimmedString.length == 0 {
+            
+            speakOrPauseButton.enabled = false
+            saveShortcutButton.enabled = false
+            
+        } else {
+            
+            speakOrPauseButton.enabled = true
+            saveShortcutButton.enabled = true
+            
+        }
         
     }
     

@@ -179,9 +179,12 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         textViewText = shortcutText!
 
-        println(view)
-
         textViewness = textViewness + textViewText
+        
+        speakOrPauseButton.enabled = true
+        saveShortcutButton.enabled = true
+        
+        println(view)
         
         // self.navigationController?.popViewControllerAnimated(true)
         self.navigationController?.popToRootViewControllerAnimated(true)

@@ -32,11 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if managedObjectContext!.save(&savingError) {
             
-            let alert = UIAlertView()
+            /*let alert = UIAlertView()
             alert.title = "Shortcut saved"
             alert.message = ""
             alert.addButtonWithTitle("Done")
-            alert.show()
+            alert.show()*/
             
             fetchShortcuts()
                         
