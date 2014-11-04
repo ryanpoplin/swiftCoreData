@@ -19,13 +19,15 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
     var textView:UITextView!
-
+    
     override func viewDidAppear(animated:Bool) {
         
         super.viewDidAppear(animated)
         
         navigationItem.setHidesBackButton(true, animated: true)
       
+        textView.delegate = self
+        
         textView?.text = textViewness
         
         textView?.becomeFirstResponder()
@@ -130,8 +132,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         self.synthesizer.delegate = self
         speechPaused = false
         
-        textView?.delegate = self
-        
         textView?.sizeToFit()
         textView?.layoutIfNeeded()
         textView = UITextView(frame: CGRect(x: 0, y: 0, width: 320, height: 220))
@@ -185,7 +185,12 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
-        println("FUCK")
+        if text == " " {
+            
+            sentenceWordCount += 1
+            println(sentenceWordCount)
+            
+        }
         
         return false
         
