@@ -84,8 +84,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         // fix condition...
         if textView?.text != nil && textView?.text != "" {
             
-            
-            
             if speechPaused == false {
                 
                 self.speakOrPauseButton.setTitle("Pause", forState: .Normal)
@@ -192,7 +190,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
             
         }
         
-        return false
+        return true
         
     }
     
