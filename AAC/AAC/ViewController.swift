@@ -200,6 +200,19 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }
     
+    //...
+    func textViewDidChange(textView: UITextView) {
+        
+        
+        
+    }
+    
+    //...
+    
+    
+    //...
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
