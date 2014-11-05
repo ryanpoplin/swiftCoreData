@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         super.viewDidAppear(animated)
         
-        navigationItem.setHidesBackButton(true, animated: true)
+        // navigationItem.setHidesBackButton(true, animated: true)
       
         textView.delegate = self
         
