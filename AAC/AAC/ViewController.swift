@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import QuartzCore
+import Foundation
 
 var textViewness:String = ""
 var speechPaused:Bool = false
@@ -190,10 +191,11 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         speakOrPauseButton.setTitle("Speak", forState: .Normal)
         speechPaused = false
+        var sentenceText:NSString = textView.text
+        sentenceLength(sentenceText)
         
     }
     
-    // edit data formula...
     /*func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
         if text == " " {
@@ -207,7 +209,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }*/
     
-    //...
     func textViewDidChange(textView: UITextView) {
         
         var textString:NSString = textView.text
@@ -228,11 +229,25 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }
     
-    //...
-    
-    
-    //...
-    
+    func sentenceLength(str:NSString) -> Int {
+        
+        var sentenceText:NSString = str
+        var scanner:NSScanner = NSScanner(string: str)
+        var whiteSpace:NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        var nonWhiteSpace:NSCharacterSet = whiteSpace.invertedSet
+        var wordCount:Int = 0
+        while (!scanner.atEnd) {
+            
+            scanner.scanUpToCharactersFromSet(nonWhiteSpace, intoString: nil)
+            scanner.scanUpToCharactersFromSet(whiteSpace, intoString: nil)
+            wordCount += 1
+            
+        }
+        
+        println(wordCount)
+        return wordCount
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
