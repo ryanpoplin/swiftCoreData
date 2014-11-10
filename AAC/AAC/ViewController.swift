@@ -238,6 +238,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         var context = JSContext(virtualMachine: JSVirtualMachine())
         
         let path = NSBundle.mainBundle().pathForResource("text", ofType: "js")
+        
         var content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
         
         context.evaluateScript(content)
@@ -248,19 +249,26 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
 
         let getSentences = context.objectForKeyedSubscript("getSentences")
         
-        println(getSentences.callWithArguments([]))
-        
         let getWordsCount = context.objectForKeyedSubscript("getWordsCount")
-        
-        println(getWordsCount.callWithArguments([]))
         
         let getWordsPerSentence = context.objectForKeyedSubscript("getWordsPerSentence")
         
-        println(getWordsPerSentence.callWithArguments([]))
-        
         let getAverageWordLength = context.objectForKeyedSubscript("getAverageWordLength")
         
-        println(getAverageWordLength.callWithArguments([]))
+        var sentences = getSentences.callWithArguments([])
+        var wordsCount = getWordsCount.callWithArguments([])
+        var wordsPerSentence = getWordsPerSentence.callWithArguments([])
+        var averageWordLength = getAverageWordLength.callWithArguments([])
+        
+        // try to get is ordered...
+        var dataDic:Dictionary = [
+            "sentences": sentences,
+            "wordsCount": wordsCount,
+            "wordsPerSentence": wordsPerSentence,
+            "averageWordLength": averageWordLength
+        ]
+        
+        println(dataDic)
         
     }
     
