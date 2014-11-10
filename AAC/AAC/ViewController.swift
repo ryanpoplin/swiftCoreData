@@ -14,6 +14,14 @@ import JavaScriptCore
 var textViewness:String = ""
 var speechPaused:Bool = false
 var sentenceWordCount:Int = 1
+var logicGateBool:Bool = true
+var wordsPerMin:Int = 0
+
+// ...
+//var timeOne = NSDate()
+//var timeTwo = NSDate()
+//var timeThree = NSTimeInterval()
+//var timeArr = []
 
 var speakOrPauseButton:UIButton!
 var saveShortcutButton:UIButton!
@@ -83,6 +91,18 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         textViewness = textView!.text
         
         performSegueWithIdentifier("TableView", sender: shortcutsButton)
+        
+    }
+    
+    func timeStamper() {
+        
+        
+        
+    }
+    
+    func timeStampEvent() {
+        
+        
         
     }
     
@@ -198,40 +218,47 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     
     func textViewDidChange(textView: UITextView) {
         
-        // logic gate and org. timestamp code...
-        
         var textString:NSString = textView.text
         var charSet:NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
         var trimmedString:NSString = textString.stringByTrimmingCharactersInSet(charSet)
         
         if trimmedString.length == 0 {
             
-            
             speakOrPauseButton.enabled = false
             saveShortcutButton.enabled = false
             
-            
         } else {
-            
             
             speakOrPauseButton.enabled = true
             saveShortcutButton.enabled = true
+            
+            if logicGateBool == true {
+                
+                // timeOne = NSDate()
+                
+                logicGateBool = false
+                
+            }
             
         }
         
     }
     
-    /*func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
     
-        if text == " " {
+        if text == " " && logicGateBool == false {
     
-            // ...
+            // timeTwo = NSDate()
+        
+            // timeThree = timeTwo.timeIntervalSinceDate(timeOne)
+            
+            logicGateBool = true
     
         }
-    
+        
         return true
     
-    }*/
+    }
     
     func analyzeText(text: String) {
         
@@ -260,13 +287,14 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         var wordsPerSentence = getWordsPerSentence.callWithArguments([])
         var averageWordLength = getAverageWordLength.callWithArguments([])
         
-        // try to get is ordered...
         var dataDic:Dictionary = [
             "sentences": sentences,
             "wordsCount": wordsCount,
             "wordsPerSentence": wordsPerSentence,
             "averageWordLength": averageWordLength
         ]
+        
+        // println(timeThree)
         
         println(dataDic)
         
