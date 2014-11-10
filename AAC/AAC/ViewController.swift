@@ -13,7 +13,6 @@ import JavaScriptCore
 
 var textViewness:String = ""
 var speechPaused:Bool = false
-var sentenceWordCount:Int = 1
 var logicGateBool:Bool = true
 var wordsPerMin:Int = 0
 
@@ -77,7 +76,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     func clearTextButtonIsPressed(sender:UIButton) {
         
         textView?.text = nil
-        sentenceWordCount = 1
         speakOrPauseButton.enabled = false
         saveShortcutButton.enabled = false
         self.synthesizer.stopSpeakingAtBoundary(.Immediate)
