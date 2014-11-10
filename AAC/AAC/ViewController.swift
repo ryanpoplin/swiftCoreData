@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 import QuartzCore
-import Foundation
+import JavaScriptCore
 
 var textViewness:String = ""
 var speechPaused:Bool = false
@@ -191,25 +191,14 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         speakOrPauseButton.setTitle("Speak", forState: .Normal)
         speechPaused = false
-        var sentenceText:NSString = textView.text
-        sentenceLength(sentenceText)
+        var sentenceText:String = textView.text
+        analyzeText(sentenceText)
         
     }
     
-    /*func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        
-        if text == " " {
-            
-            sentenceWordCount += 1
-            println(sentenceWordCount)
-            
-        }
-        
-        return true
-        
-    }*/
-    
     func textViewDidChange(textView: UITextView) {
+        
+        // logic gate and org. timestamp code...
         
         var textString:NSString = textView.text
         var charSet:NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
@@ -217,10 +206,13 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         if trimmedString.length == 0 {
             
+            
             speakOrPauseButton.enabled = false
             saveShortcutButton.enabled = false
             
+            
         } else {
+            
             
             speakOrPauseButton.enabled = true
             saveShortcutButton.enabled = true
@@ -229,23 +221,32 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }
     
-    func sentenceLength(str:NSString) -> Int {
-        
-        var sentenceText:NSString = str
-        var scanner:NSScanner = NSScanner(string: str)
-        var whiteSpace:NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        var nonWhiteSpace:NSCharacterSet = whiteSpace.invertedSet
-        var wordCount:Int = 0
-        while (!scanner.atEnd) {
-            
-            scanner.scanUpToCharactersFromSet(nonWhiteSpace, intoString: nil)
-            scanner.scanUpToCharactersFromSet(whiteSpace, intoString: nil)
-            wordCount += 1
-            
+    /*func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    
+        if text == " " {
+    
+            // ...
+    
         }
+    
+        return true
+    
+    }*/
+    
+    func analyzeText(text: String) {
         
-        println(wordCount)
-        return wordCount
+        var context = JSContext(virtualMachine: JSVirtualMachine())
+        
+        let path = NSBundle.mainBundle().pathForResource("text", ofType: "js")
+        var content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
+        
+        context.evaluateScript(content)
+        
+        let analyzeText = context.objectForKeyedSubscript("analyzeText")
+        
+        let analyzeTextVal = analyzeText.callWithArguments([text])
+        
+        println(analyzeTextVal)
         
     }
     
