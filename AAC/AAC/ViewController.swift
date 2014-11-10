@@ -13,8 +13,8 @@ import JavaScriptCore
 
 var textViewness:String = ""
 var speechPaused:Bool = false
-var logicGateBool:Bool = true
-var wordsPerMin:Int = 0
+// var logicGateBool:Bool = true
+// var wordsPerMin:Int = 0
 
 // ...
 //var timeOne = NSDate()
@@ -92,7 +92,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }
     
-    func timeStamper() {
+    /*func timeStamper() {
         
         
         
@@ -102,7 +102,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         
         
-    }
+    }*/
     
     func speakOrPauseButtonIsPressed(sender:UIButton) {
         
@@ -150,6 +150,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     var synthesizer:AVSpeechSynthesizer!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.whiteColor()
@@ -230,25 +231,25 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
             speakOrPauseButton.enabled = true
             saveShortcutButton.enabled = true
             
-            if logicGateBool == true {
+            /*if logicGateBool == true {
                 
-                // timeOne = NSDate()
+                timeOne = NSDate()
                 
                 logicGateBool = false
                 
-            }
+            }*/
             
         }
         
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    /*func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
     
         if text == " " && logicGateBool == false {
     
-            // timeTwo = NSDate()
+            timeTwo = NSDate()
         
-            // timeThree = timeTwo.timeIntervalSinceDate(timeOne)
+            timeThree = timeTwo.timeIntervalSinceDate(timeOne)
             
             logicGateBool = true
     
@@ -256,7 +257,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         return true
     
-    }
+    }*/
     
     func analyzeText(text: String) {
         
