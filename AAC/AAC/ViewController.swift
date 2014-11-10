@@ -244,9 +244,23 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         let analyzeText = context.objectForKeyedSubscript("analyzeText")
         
-        let analyzeTextVal = analyzeText.callWithArguments([text])
+        analyzeText.callWithArguments([text])
+
+        let getSentences = context.objectForKeyedSubscript("getSentences")
         
-        println(analyzeTextVal)
+        println(getSentences.callWithArguments([]))
+        
+        let getWordsCount = context.objectForKeyedSubscript("getWordsCount")
+        
+        println(getWordsCount.callWithArguments([]))
+        
+        let getWordsPerSentence = context.objectForKeyedSubscript("getWordsPerSentence")
+        
+        println(getWordsPerSentence.callWithArguments([]))
+        
+        let getAverageWordLength = context.objectForKeyedSubscript("getAverageWordLength")
+        
+        println(getAverageWordLength.callWithArguments([]))
         
     }
     
