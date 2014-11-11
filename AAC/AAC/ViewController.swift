@@ -287,15 +287,24 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         var averageWordLength = getAverageWordLength.callWithArguments([])
         
         var dataDic:Dictionary = [
+            "text": text,
+            // add array of words that make up text value...
             "sentences": sentences,
             "wordsCount": wordsCount,
             "wordsPerSentence": wordsPerSentence,
             "averageWordLength": averageWordLength
+            // add words per minute...
         ]
         
         // println(timeThree)
         
         println(dataDic)
+        
+        /*KeenClient.sharedClient().addEvent(<#event: [NSObject : AnyObject]!#>, toEventCollection: <#String!#>, error: <#NSErrorPointer#>)*/
+        
+        /*KeenClient.sharedClient().uploadWithFinishedBlock { () -> Void in
+        
+        }*/
         
     }
     
