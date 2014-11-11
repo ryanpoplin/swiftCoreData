@@ -286,6 +286,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         var wordsPerSentence = getWordsPerSentence.callWithArguments([]).toNumber()
         var averageWordLength = getAverageWordLength.callWithArguments([]).toNumber()
         
+        // edit data structure for production...
         var dataDic:NSDictionary = [
             "text": text,
             "sentences": sentences,
@@ -299,6 +300,8 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         println(dataDic)
         
         var sentenceSpoken:NSString = "sentence_spoken"
+        
+        // store a collection of this events in JSON for threshold...
         
         KeenClient.sharedClient().addEvent(dataDic, toEventCollection: sentenceSpoken, error: nil)
         
