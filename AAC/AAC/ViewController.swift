@@ -281,30 +281,28 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         let getAverageWordLength = context.objectForKeyedSubscript("getAverageWordLength")
         
-        var sentences = getSentences.callWithArguments([])
-        var wordsCount = getWordsCount.callWithArguments([])
-        var wordsPerSentence = getWordsPerSentence.callWithArguments([])
-        var averageWordLength = getAverageWordLength.callWithArguments([])
+        var sentences = getSentences.callWithArguments([]).toNumber()
+        var wordsCount = getWordsCount.callWithArguments([]).toNumber()
+        var wordsPerSentence = getWordsPerSentence.callWithArguments([]).toNumber()
+        var averageWordLength = getAverageWordLength.callWithArguments([]).toNumber()
         
-        var dataDic:Dictionary = [
+        var dataDic:NSDictionary = [
             "text": text,
-            // add array of words that make up text value...
             "sentences": sentences,
             "wordsCount": wordsCount,
             "wordsPerSentence": wordsPerSentence,
             "averageWordLength": averageWordLength
-            // add words per minute...
         ]
         
         // println(timeThree)
         
         println(dataDic)
         
-        /*KeenClient.sharedClient().addEvent(<#event: [NSObject : AnyObject]!#>, toEventCollection: <#String!#>, error: <#NSErrorPointer#>)*/
+        var sentenceSpoken:NSString = "sentence_spoken"
         
-        /*KeenClient.sharedClient().uploadWithFinishedBlock { () -> Void in
+        KeenClient.sharedClient().addEvent(dataDic, toEventCollection: sentenceSpoken, error: nil)
         
-        }*/
+        KeenClient.sharedClient().uploadWithFinishedBlock({ (Void) -> Void in })
         
     }
     

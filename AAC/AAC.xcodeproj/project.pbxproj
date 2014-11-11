@@ -45,14 +45,13 @@
 		5A6D4E0A19FE14E400F5F31E /* AACTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACTests.swift; sourceTree = "<group>"; };
 		5A6D4E1419FE153A00F5F31E /* Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
 		5A6D4E1619FE2DB900F5F31E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		5A6D4E1B19FEBE5800F5F31E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = AAC/MyPlayground.playground; sourceTree = "<group>"; };
 		5ABDE9361A1043C000040F45 /* text.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = text.js; sourceTree = "<group>"; };
 		5ABDE9391A11975700040F45 /* KeenClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeenClient.h; sourceTree = "<group>"; };
 		5ABDE93A1A11975700040F45 /* KeenProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeenProperties.h; sourceTree = "<group>"; };
 		5ABDE93B1A11975700040F45 /* KIOEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIOEventStore.h; sourceTree = "<group>"; };
 		5ABDE93C1A11975700040F45 /* libKeenClient-Aggregate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libKeenClient-Aggregate.a"; sourceTree = "<group>"; };
 		5ABDE93E1A119ADE00040F45 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		5ABDE9401A11A01E00040F45 /* AAC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AAC-Bridging-Header.h"; sourceTree = "<group>"; };
+		5ABDE9411A11E56B00040F45 /* AAC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AAC-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				5ABDE93E1A119ADE00040F45 /* CoreLocation.framework */,
-				5A6D4E1B19FEBE5800F5F31E /* MyPlayground.playground */,
 				5ABDE9381A11975700040F45 /* Keen */,
+				5ABDE9411A11E56B00040F45 /* AAC-Bridging-Header.h */,
 				5A6D4DEE19FE14E300F5F31E /* AAC */,
 				5A6D4E0719FE14E400F5F31E /* AACTests */,
 				5A6D4DED19FE14E300F5F31E /* Products */,
@@ -99,7 +98,6 @@
 		5A6D4DEE19FE14E300F5F31E /* AAC */ = {
 			isa = PBXGroup;
 			children = (
-				5ABDE9401A11A01E00040F45 /* AAC-Bridging-Header.h */,
 				5A6D4DF819FE14E400F5F31E /* Main.storyboard */,
 				5A6D4DF119FE14E300F5F31E /* AppDelegate.swift */,
 				5A6D4DF619FE14E400F5F31E /* ViewController.swift */,
@@ -389,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AAC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -397,7 +396,8 @@
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "AAC/AAC-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AAC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -405,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AAC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -413,7 +414,7 @@
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "AAC/AAC-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AAC-Bridging-Header.h";
 			};
 			name = Release;
 		};
