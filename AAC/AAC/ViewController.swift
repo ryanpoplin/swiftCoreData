@@ -11,6 +11,8 @@ import AVFoundation
 import QuartzCore
 import JavaScriptCore
 
+/* SETUP PRIVACY POLICY VIEW, CONFIG. PARSE AND KEEN RELATIONSHIP, scale to diff. device sizes... */
+
 var textViewness:String = ""
 var speechPaused:Bool = false
 // var logicGateBool:Bool = true
@@ -261,13 +263,15 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     
     func analyzeText(text: String) {
         
-        var context = JSContext(virtualMachine: JSVirtualMachine())
+        let context = JSContext(virtualMachine: JSVirtualMachine())
         
         let path = NSBundle.mainBundle().pathForResource("text", ofType: "js")
         
-        var content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
+        let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
         
         context.evaluateScript(content)
+        
+        // refactor...
         
         let analyzeText = context.objectForKeyedSubscript("analyzeText")
         
@@ -286,7 +290,7 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         var wordsPerSentence = getWordsPerSentence.callWithArguments([]).toNumber()
         var averageWordLength = getAverageWordLength.callWithArguments([]).toNumber()
         
-        // edit data structure for production...
+        // refactor the data structure for Parse and Keen init...
         var dataDic:NSDictionary = [
             "text": text,
             "sentences": sentences,
@@ -299,10 +303,9 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         println(dataDic)
         
-        var sentenceSpoken:NSString = "sentence_spoken"
+        let sentenceSpoken:NSString = "sentence_spoken"
         
-        // store a collection of this events in JSON for threshold...
-        
+        // store a collection of this events in JSON for threshold(refactor)...
         KeenClient.sharedClient().addEvent(dataDic, toEventCollection: sentenceSpoken, error: nil)
         
         KeenClient.sharedClient().uploadWithFinishedBlock({ (Void) -> Void in })
