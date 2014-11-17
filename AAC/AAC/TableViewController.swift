@@ -93,13 +93,6 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
             view.addSubview(theTableView)
         }
         
-        /*button.setTitle("Go Back", forState: UIControlState())
-        button.backgroundColor = UIColor.clearColor()
-        button.setTitleColor(UIColor.blueColor(), forState: UIControlState())
-        button.sizeToFit()
-        button.backgroundColor = UIColor.lightGrayColor()
-        button.addTarget(self, action: "goBackButtonIsPressed:", forControlEvents: .TouchDown)*/
-        
         // Do any additional setup after loading the view.
     }
     
@@ -111,20 +104,6 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
     func goBackButtonIsPressed(sender:UIButton!) {
         performSegueWithIdentifier("GoBack", sender: button)
     }
-    
-    /*func newLabelWithTitle(title: String) -> UIButton {
-        return button
-    }
-    
-    func tableView(tableView: UITableView!,
-        heightForHeaderInSection section: Int) -> CGFloat{
-            return 50
-    }
-    
-    func tableView(tableView: UITableView!,
-        viewForHeaderInSection section: Int) -> UIView!{
-            return newLabelWithTitle("Section \(section) Header")
-    }*/
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         
@@ -186,10 +165,7 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         
         println(view)
         
-        // self.navigationController?.popViewControllerAnimated(true)
         self.navigationController?.popToRootViewControllerAnimated(true)
-        
-        // performSegueWithIdentifier("View", sender: nil)
         
     }
     

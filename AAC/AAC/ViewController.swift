@@ -11,18 +11,8 @@ import AVFoundation
 import QuartzCore
 import JavaScriptCore
 
-/* SETUP PRIVACY POLICY VIEW, CONFIG. PARSE AND KEEN RELATIONSHIP, scale to diff. device sizes... */
-
 var textViewness:String = ""
 var speechPaused:Bool = false
-// var logicGateBool:Bool = true
-// var wordsPerMin:Int = 0
-
-// ...
-//var timeOne = NSDate()
-//var timeTwo = NSDate()
-//var timeThree = NSTimeInterval()
-//var timeArr = []
 
 var speakOrPauseButton:UIButton!
 var saveShortcutButton:UIButton!
@@ -37,8 +27,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         super.viewDidAppear(animated)
         
-        // navigationItem.setHidesBackButton(true, animated: true)
-      
         textView.delegate = self
         
         textView?.text = textViewness
@@ -54,12 +42,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         var trimmedString:NSString = textString.stringByTrimmingCharactersInSet(charSet)
         
         if trimmedString.length == 0 {
-
-            /*let alert = UIAlertView()
-            alert.title = "Type in some text"
-            alert.message = ""
-            alert.addButtonWithTitle("Done")
-            alert.show()*/
             
         } else {
             
@@ -94,18 +76,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }
     
-    /*func timeStamper() {
-        
-        
-        
-    }
-    
-    func timeStampEvent() {
-        
-        
-        
-    }*/
-    
     func speakOrPauseButtonIsPressed(sender:UIButton) {
         
         var textString:NSString = textView.text
@@ -113,12 +83,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         var trimmedString:NSString = textString.stringByTrimmingCharactersInSet(charSet)
         
         if trimmedString.length == 0 {
-    
-            /*let alert = UIAlertView()
-            alert.title = "Type in some text"
-            alert.message = ""
-            alert.addButtonWithTitle("Done")
-            alert.show()*/
             
         } else {
             
@@ -233,27 +197,13 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
             speakOrPauseButton.enabled = true
             saveShortcutButton.enabled = true
             
-            /*if logicGateBool == true {
-                
-                timeOne = NSDate()
-                
-                logicGateBool = false
-                
-            }*/
-            
         }
         
     }
     
     /*func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
     
-        if text == " " && logicGateBool == false {
-    
-            timeTwo = NSDate()
-        
-            timeThree = timeTwo.timeIntervalSinceDate(timeOne)
-            
-            logicGateBool = true
+        if text == " " {
     
         }
         
@@ -270,8 +220,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
         
         context.evaluateScript(content)
-        
-        // refactor...
         
         let analyzeText = context.objectForKeyedSubscript("analyzeText")
         
@@ -290,7 +238,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         var wordsPerSentence = getWordsPerSentence.callWithArguments([]).toNumber()
         var averageWordLength = getAverageWordLength.callWithArguments([]).toNumber()
         
-        // refactor the data structure for Parse and Keen init...
         var dataDic:NSDictionary = [
             "text": text,
             "sentences": sentences,
@@ -299,13 +246,10 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
             "averageWordLength": averageWordLength
         ]
         
-        // println(timeThree)
-        
         println(dataDic)
         
         let sentenceSpoken:NSString = "sentence_spoken"
         
-        // store a collection of this events in JSON for threshold(refactor)...
         KeenClient.sharedClient().addEvent(dataDic, toEventCollection: sentenceSpoken, error: nil)
         
         KeenClient.sharedClient().uploadWithFinishedBlock({ (Void) -> Void in })

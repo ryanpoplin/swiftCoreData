@@ -32,12 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if managedObjectContext!.save(&savingError) {
             
-            /*let alert = UIAlertView()
-            alert.title = "Shortcut saved"
-            alert.message = ""
-            alert.addButtonWithTitle("Done")
-            alert.show()*/
-            
             fetchShortcuts()
                         
             return true
@@ -58,8 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
-        // fetchShortcuts()
         
         return true
     
