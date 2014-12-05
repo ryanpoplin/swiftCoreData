@@ -278,6 +278,10 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
         let sentenceSpoken:NSString = "sentence_spoken"
         
+        // HERE'S SOME COMMENTS...
+        //
+        //
+        
         KeenClient.sharedClient().addEvent(dataDic, toEventCollection: sentenceSpoken, error: nil)
         
         KeenClient.sharedClient().uploadWithFinishedBlock({ (Void) -> Void in })
