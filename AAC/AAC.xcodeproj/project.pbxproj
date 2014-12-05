@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A09ECD91A224388004F1168 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A09ECD81A224388004F1168 /* SettingsViewController.swift */; };
 		5A6D4DF219FE14E300F5F31E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D4DF119FE14E300F5F31E /* AppDelegate.swift */; };
 		5A6D4DF519FE14E400F5F31E /* AAC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D4DF319FE14E400F5F31E /* AAC.xcdatamodeld */; };
 		5A6D4DF719FE14E400F5F31E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D4DF619FE14E400F5F31E /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A09ECD81A224388004F1168 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5A6D4DEC19FE14E300F5F31E /* AAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A6D4DF019FE14E300F5F31E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A6D4DF119FE14E300F5F31E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				5A6D4DF119FE14E300F5F31E /* AppDelegate.swift */,
 				5A6D4DF619FE14E400F5F31E /* ViewController.swift */,
 				5A6D4E1619FE2DB900F5F31E /* TableViewController.swift */,
+				5A09ECD81A224388004F1168 /* SettingsViewController.swift */,
 				5A6D4E1819FEB67A00F5F31E /* CoreData */,
 				5A6D4DEF19FE14E300F5F31E /* Supporting Files */,
 				5A6D4DFD19FE14E400F5F31E /* LaunchScreen.xib */,
@@ -263,6 +266,7 @@
 				5A6D4DF219FE14E300F5F31E /* AppDelegate.swift in Sources */,
 				5A6D4E1719FE2DB900F5F31E /* TableViewController.swift in Sources */,
 				5A6D4DF519FE14E400F5F31E /* AAC.xcdatamodeld in Sources */,
+				5A09ECD91A224388004F1168 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

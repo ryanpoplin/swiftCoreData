@@ -9,8 +9,6 @@
 import Foundation
 import CoreData
 
-/* DO I NEED TO ADD A TIMESTAMP ATTRIBUTE FOR ORDERING? */
-
 class Shortcut: NSManagedObject {
 
     @NSManaged var shortcut: String

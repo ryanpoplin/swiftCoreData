@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+// ADD EDIT FUNC...
+
 var textViewText:String = ""
 
 class TableViewController: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITableViewDelegate {
@@ -222,6 +224,8 @@ class TableViewController: UIViewController, UITableViewDataSource, NSFetchedRes
         return true
     
     }
+    
+    // REMOVE THIS FROM THE PROJECT...
     
     // MARK: - Navigation
     

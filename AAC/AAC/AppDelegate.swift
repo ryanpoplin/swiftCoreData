@@ -74,9 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        let projectKey:NSString = "5461ced93831445dbeea28d0"
-        let writeKey:NSString = "76ebbda1640637a38f73ffa4e441fa335c4db5d256afaab9e2a5fb28cf9b6cfad6d3424fa4261b43d719173fde21ecbecedd39347aaa36897d9275104e142d7f7983c971093eb4025e918d39446b5ee30f8ed3f7d552f133df894b15566b231531d316ed15c86758923305d333300caa"
-        let readKey:NSString = "3ffdc4fd64a96f6919f4316d22b88bf0852bfac1de46067c595ff06d10ecb4d32b89bd0f7c5a2ef29fc79d6a8221a99cfe75176acb21439e11889195e31e4495520ae120fe2b2a980c3cebda822045ac28b28e8c4486cdbbd01eb7ddaf63df41ca608a6601f1c6117493ef6f0e614365"
+        let projectKey:NSString = "5478a0b033e40628645a3fde"
+        let writeKey:NSString = "870db5573740d5ff67b3fd55e8774f4a95012ddcf865d7d30e5ae445f98c9688cb7aa33586032c68ae5cb8fc9a0ae0395380b96433b14a5ffbba7d6b4335a3192d32b3b23ebba9fafede7bc7bbfbc1a08e1f1a8c9516b93d89793e354bff79caf291622b6d848b2c770e0a6b8f767b03"
+        let readKey:NSString = "6d37cf91b4b77699642d6946e5b324378da907512bca1bf7babaab2fdb20807047691a3ee5f78d6cfd750b67e09c163f65cc0eae758c3f9cb1cb872a79532c4cdaa1ef1e039efa36aa1161e8cce25d8a6e64e85eeaa8313e24e89c4752a58f31513bf0bf5165609530f850c205f961f2"
         
         KeenClient.sharedClientWithProjectId(projectKey, andWriteKey: writeKey, andReadKey: readKey)
         
