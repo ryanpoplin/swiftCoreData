@@ -18,6 +18,8 @@ var speechPaused:Bool = false
 
 var speakOrPauseButton:UIButton!
 var saveShortcutButton:UIButton!
+var clearTextButton:UIButton!
+var shortcutsButton:UIButton!
 
 class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerDelegate {
     
@@ -26,6 +28,10 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
     var textView:UITextView!
     
     override func viewDidAppear(animated:Bool) {
+        
+        saveShortcutButton.hidden = true
+        clearTextButton.hidden = true
+        shortcutsButton.hidden = true
         
         super.viewDidAppear(animated)
         
@@ -57,8 +63,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         
     }
     
-    var clearTextButton:UIButton!
-    
     func clearTextButtonIsPressed(sender:UIButton) {
         
         textView?.text = nil
@@ -67,8 +71,6 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
         self.synthesizer.stopSpeakingAtBoundary(.Immediate)
         
     }
-    
-    var shortcutsButton:UIButton!
     
     func segueToShortcuts(sender:UIButton) {
         
@@ -152,14 +154,16 @@ class ViewController: UIViewController, UITextViewDelegate, AVSpeechSynthesizerD
             textViewHeight = 220*/
             
         } else {
+
+            
             
             textViewWidth = 320
             textViewHeight = 220
             
-            /*buttonWidth = 65
+            buttonWidth = 65
             buttonHeight = 44
             buttonX = 250
-            buttonY = 245*/
+            buttonY = 245
             
         }
         
