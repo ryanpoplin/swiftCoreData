@@ -8,7 +8,7 @@
 
 import UIKit
 
-class laGrid: UIView {
+class laGrid: UICollectionView {
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -18,8 +18,12 @@ class laGrid: UIView {
     }
     */
     
-    // add collection view shit for AAC...
+//    let testGridSectionCellColors = [
+//        UIColor.redColor(),
+//        UIColor.greenColor(),
+//        UIColor.blueColor()
+//    ]
     
     
-
+    
 }
