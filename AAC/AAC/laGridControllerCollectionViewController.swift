@@ -15,7 +15,7 @@ class laGridControllerCollectionViewController: UICollectionViewController {
     let testSectionCellColors = [
         UIColor.redColor(),
         UIColor.greenColor(),
-        UIColor.blue.Color()
+        UIColor.blueColor()
     ]
     
     override func viewDidLoad() {

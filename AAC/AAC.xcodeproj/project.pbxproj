@@ -49,6 +49,7 @@
 		5A6D4E1419FE153A00F5F31E /* Shortcut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
 		5A6D4E1619FE2DB900F5F31E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		5A8787C41A6A307800E26A09 /* laGridControllerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = laGridControllerCollectionViewController.swift; sourceTree = "<group>"; };
+		5A8787C61A6A35B000E26A09 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		5ABCF1C81A326E0D00C1CE4B /* text.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = text.js; sourceTree = "<group>"; };
 		5ABDE9391A11975700040F45 /* KeenClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeenClient.h; sourceTree = "<group>"; };
 		5ABDE93A1A11975700040F45 /* KeenProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeenProperties.h; sourceTree = "<group>"; };
@@ -81,6 +82,7 @@
 		5A6D4DE319FE14E300F5F31E = {
 			isa = PBXGroup;
 			children = (
+				5A8787C61A6A35B000E26A09 /* MyPlayground.playground */,
 				5ABDE93E1A119ADE00040F45 /* CoreLocation.framework */,
 				5ABDE9381A11975700040F45 /* Keen */,
 				5ABDE9411A11E56B00040F45 /* AAC-Bridging-Header.h */,
