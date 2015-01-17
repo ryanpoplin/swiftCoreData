@@ -1,7 +1,7 @@
 var sentences, wordsCount, wordsPerSentence, averageWordLength;
 function analyzeText (text) {
     var textString = text;
-    if (textString.replace(/\s*/g,'').length == 0) {
+    if (textString.replace(/\s*/g,'').length === 0) {
         return;
     }
     textString = textString.replace(/(\.\.\.|!|\?)/g, ".").replace(/\s*$/g, "");
