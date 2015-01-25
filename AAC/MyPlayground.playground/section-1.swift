@@ -2,10 +2,3 @@
 
 import UIKit
 
-func iLoveMyDad(love: String) -> String {
-    
-    return love
-    
-}
-
-iLoveMyDad("Yes I do...")
